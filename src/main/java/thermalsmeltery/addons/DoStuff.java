@@ -10,11 +10,13 @@ import tconstruct.TConstruct;
 import tconstruct.plugins.te4.TE4Helper;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.tools.TinkerTools;
-import tconstruct.tools.TinkerTools.MaterialID;
 
 public class DoStuff {
 	
 	public static int RFMultiplier = 24;
+	
+	ItemStack ore = OreDictionary.getOres("oreIron").get(0).copy();
+	ore.stackSize = 1;
 	
 	@Handler
     public static void init () {
@@ -26,7 +28,7 @@ public class DoStuff {
 		
 		//Iron
 		TE4Helper.addCrucibleRecipe(RFMultiplier*TConstruct.ingotLiquidValue, new ItemStack(Items.iron_ingot, 1), new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.ingotLiquidValue));
-		TE4Helper.addCrucibleRecipe(RFMultiplier*TConstruct.oreLiquidValue, new ItemStack(Blocks.iron_ore, 1), new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.oreLiquidValue));
+		TE4Helper.addCrucibleRecipe(RFMultiplier*TConstruct.oreLiquidValue, ore, new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.oreLiquidValue));
 		TE4Helper.addCrucibleRecipe(RFMultiplier*TConstruct.blockLiquidValue, new ItemStack(Blocks.iron_block, 1), new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.blockLiquidValue));
 		TE4Helper.addCrucibleRecipe(RFMultiplier*TConstruct.chunkLiquidValue, new ItemStack(TinkerTools.toolShard, 1, TinkerTools.MaterialID.Iron), new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.chunkLiquidValue));
 		//I'm just going to leave this out for now, until OreDictionary Stuff is sorted out
