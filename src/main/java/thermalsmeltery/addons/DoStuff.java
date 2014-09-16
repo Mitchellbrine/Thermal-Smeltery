@@ -14,12 +14,14 @@ import tconstruct.tools.TinkerTools;
 public class DoStuff {
 	
 	public static int RFMultiplier = 24;
-	
+  public static ItemStack ore; // we need to declare ore as a static field (public, in case you access it elsewhere
+  // this puts it in the whole class's scope
 	
 	@Handler
     public static void init () {
 		letsGetCooking();
-		ItemStack ore = OreDictionary.getOres("oreIron").get(0).copy();
+		// if we declared it here, when the method finishes, it falls out of scope
+		ore = OreDictionary.getOres("oreIron").get(0).copy(); // then we set a value
 		ore.stackSize = 1;
     }
 	
@@ -28,7 +30,7 @@ public class DoStuff {
 		
 		//Iron
 		TE4Helper.addCrucibleRecipe(RFMultiplier*TConstruct.ingotLiquidValue, new ItemStack(Items.iron_ingot, 1), new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.ingotLiquidValue));
-		TE4Helper.addCrucibleRecipe(RFMultiplier*TConstruct.oreLiquidValue, ore, new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.oreLiquidValue));
+		TE4Helper.addCrucibleRecipe(RFMultiplier*TConstruct.oreLiquidValue, ore, new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.oreLiquidValue)); // here, the variable can be used because it is in the class scope
 		TE4Helper.addCrucibleRecipe(RFMultiplier*TConstruct.blockLiquidValue, new ItemStack(Blocks.iron_block, 1), new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.blockLiquidValue));
 		TE4Helper.addCrucibleRecipe(RFMultiplier*TConstruct.chunkLiquidValue, new ItemStack(TinkerTools.toolShard, 1, TinkerTools.MaterialID.Iron), new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.chunkLiquidValue));
 		//I'm just going to leave this out for now, until OreDictionary Stuff is sorted out
