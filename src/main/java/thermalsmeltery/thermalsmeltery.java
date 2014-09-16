@@ -19,16 +19,7 @@ public class thermalsmeltery {
 	public void init(FMLInitializationEvent event)
 	{
 		DoStuff.init();
-		
-		
-		if (Loader.isModLoaded("Natura"))
-        {
-            logger.info("Hey guys! Can I join in on the fun too?"); 
-        }
-        else
-        {
-        	logger.info("Yeah mDiyo, yeah science!");
-        }
+		logger.info("Help me, I'm smelting! I'm smeeeelting...");
 	}
 
 }
