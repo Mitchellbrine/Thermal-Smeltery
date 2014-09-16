@@ -15,12 +15,12 @@ public class DoStuff {
 	
 	public static int RFMultiplier = 24;
 	
-	ItemStack ore = OreDictionary.getOres("oreIron").get(0).copy();
-	ore.stackSize = 1;
 	
 	@Handler
     public static void init () {
 		letsGetCooking();
+		ItemStack ore = OreDictionary.getOres("oreIron").get(0).copy();
+		ore.stackSize = 1;
     }
 	
 	private static void letsGetCooking() {
